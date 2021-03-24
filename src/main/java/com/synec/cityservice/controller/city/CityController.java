@@ -1,5 +1,6 @@
 package com.synec.cityservice.controller.city;
 
+import com.synec.cityservice.advice.ExecutionTimeTracker;
 import com.synec.cityservice.controller.city.model.SearchInput;
 import com.synec.cityservice.model.IdName;
 import com.synec.cityservice.model.response.SynecResponse;
@@ -22,10 +23,9 @@ public class CityController {
 
     private final CityService cityService;
 
+    @ExecutionTimeTracker
     @GetMapping("/search")
     public SynecResponse<List<IdName>> search(@Valid SearchInput input) {
-        log.debug("CityController.search: " + input.toString());
-
         return new OKResponse(cityService.search(input));
     }
 }

@@ -24,7 +24,7 @@ public class CityService {
     public List<IdName> search(SearchInput input) {
         log.debug("CityService.search: " + input.toString());
 
-        String url = applicationProperties.getWeatherServiceBaseUrl() + "/box/city?bbox=12,32,15,37,10&appid=" + applicationProperties.getWeatherServiceAppId();
+        String url = applicationProperties.getWeatherServiceBaseUrl() + "/box/city?bbox=12,10,60,80,10&appid=" + applicationProperties.getWeatherServiceAppId();
 
         ResponseEntity<WeatherServiceBBoxCitiesOutput> allCities = restTemplate.getForEntity(url, WeatherServiceBBoxCitiesOutput.class);
 
